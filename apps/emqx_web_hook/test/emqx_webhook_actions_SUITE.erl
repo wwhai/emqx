@@ -37,6 +37,10 @@ end_per_suite(Cfg) ->
 t_export(_) ->
     {ok, _} = emqx_mgmt_data_backup:export().
 
-t_import(_) ->
+t_import_bridge(_) ->
     Path = emqx_ct_helpers:deps_path(emqx_web_hook, "test/emqx_web_hook_SUITE_data/"),
-    ok = emqx_mgmt_data_backup:import(Path ++ "/4_2.json").
+    ok = emqx_mgmt_data_backup:import(Path ++ "/4_2_bridge.json").
+
+t_import_webhook(_) ->
+    Path = emqx_ct_helpers:deps_path(emqx_web_hook, "test/emqx_web_hook_SUITE_data/"),
+    ok = emqx_mgmt_data_backup:import(Path ++ "/4_2_webhook.json").
